@@ -8,6 +8,10 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const dbConnect = require('./utils/db')
+
+const categoryRouter = require('./routes/dashboard/categoryRoutes')
+const productRouter = require('./routes/dashboard/porductRoute')
+const sellerRouter = require('./routes/dashboard/sellerRoutes')
 app.use(bodyParser.json({}))
 app.use(bodyParser.json({}))
 app.use(cors({
@@ -17,6 +21,9 @@ app.use(cors({
 app.use(cookieParser())
 
 app.use('/api', authRouter)
+app.use('/api', categoryRouter)
+app.use('/api', productRouter)
+app.use('/api', sellerRouter)
 
 app.get('/',(req, res)=>res.send('hello world'))
 dbConnect()
